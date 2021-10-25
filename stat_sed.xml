@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="メニューに戻る"
+                android:id="@+id/stat_back_menu"              
+  />
+
+  <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="統計分析"
+              android:id="@+id/stat_send_title"
+              android:layout_below="@id/stat_back_menu"
+    />
+
+  <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="利用するCSVデータを選択してください\n(Shift-jis・ASCIIのみ対応)"
+                android:id="@+id/stat_send_message"
+                android:layout_below="@id/stat_send_title"
+    />
+
+  <Button
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="選択"
+                  android:id="@+id/stat_select"
+                  android:layout_below="@id/stat_send_message"
+  />
+
+</LinearLayout>

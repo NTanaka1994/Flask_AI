@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="メールアドレスとパスワードを入れてください"
+          android:id="@+id/state_login"
+    />
+
+  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="メールアドレスを入れてください"
+        android:id="@+id/label_mail"
+        android:layout_below="@id/state_login"
+    />
+
+  <EditText
+          android:id="@+id/text_mail"
+          android:layout_width="match_parent"
+          android:imeOptions="actionGo"
+          android:inputType="text"
+          android:layout_height="wrap_content" 
+          android:layout_below="@id/label_mail"
+    />
+
+  <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="パスワードを入れてください"
+          android:id="@+id/label_pass"
+          android:layout_below="@id/text_mail"
+    />
+
+  <EditText
+            android:id="@+id/text_pass"
+            android:layout_width="match_parent"
+            android:imeOptions="actionGo"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_pass"
+            android:inputType="textPassword"
+    />
+
+  <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ログイン"
+        android:id="@+id/login_button"
+        android:layout_below="@id/text_pass"
+  />
+
+  <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="新規登録"
+          android:id="@+id/create"
+          android:layout_below="@id/login_button"
+ />
+
+  <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text=""
+          android:id="@+id/id_num"
+          android:layout_below="@id/create"
+    />
+
+
+
+</RelativeLayout>

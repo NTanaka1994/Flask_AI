@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">App1</string>
+    <string name="action_settings">Settings</string>
+
+  <string name="workclass_prompt">Choose a Workclass</string>
+  <string-array name="workclass_array">
+    <item>workclass_?</item>
+    <item>workclass_Federal-gov</item>
+    <item>workclass_Local-gov</item>
+    <item>workclass_Private</item>
+    <item>workclass_Self-emp-inc</item>
+    <item>workclass_Self-emp-not-inc</item>
+    <item>workclass_State-gov</item>
+  </string-array>
+  
+  <string name="education_prompt">Choose a education</string>
+  <string-array name="education_array">
+    <item>education_10th</item>
+    <item>education_11th</item>
+    <item>education_12th</item>
+    <item>education_1st-4th</item>
+    <item>education_5th-6th</item>
+    <item>education_7th-8th</item>
+    <item>education_9th</item>
+    <item>education_Assoc-acdm</item>
+    <item>education_Assoc-voc</item>
+    <item>education_Bachelors</item>
+    <item>education_HS-grad</item>
+    <item>education_Masters</item>
+    <item>education_Prof-school</item>
+    <item>education_Some-college</item>
+  </string-array>
+
+  <string name="marital_status_prompt">Choose a marital_status</string>
+  <string-array name="marital_status_array">
+    <item>marital-status_Married-civ-spouse</item>
+    <item>marital-status_Never-married</item>
+    <item>marital-status_Separated</item>
+    <item>marital-status_Widowed</item>
+  </string-array>
+
+  <string name="occupation_prompt">Choose a occupation</string>
+  <string-array name="occupation_array">
+    <item>occupation_?</item>
+    <item>occupation_Adm-clerical</item>
+    <item>occupation_Craft-repair</item>
+    <item>occupation_Exec-managerial</item>
+    <item>occupation_Farming-fishing</item>
+    <item>occupation_Handlers-cleaners</item>
+    <item>occupation_Machine-op-inspct</item>
+    <item>occupation_Prof-specialty</item>
+    <item>occupation_Protective-serv</item>
+    <item>occupation_Sales</item>
+    <item>occupation_Tech-support</item>
+    <item>occupation_Transport-moving</item>
+    <item>occupation_Other-service</item>
+  </string-array>
+  
+  <string name="relationship_prompt">Choose a relationship</string>
+  <string-array name="relationship_array">
+    <item>relationship_Husband</item>
+    <item>relationship_Not-in-family</item>
+    <item>relationship_Own-child</item>
+    <item>relationship_Wife</item>
+    <item>relationship_Unmarried</item>
+    <item>relationship_Other-relative</item>
+  </string-array>
+
+  <string name="race_prompt">Choose a race</string>
+  <string-array name="race_array">
+    <item>race_Asian-Pac-Islander</item>
+    <item>race_Black</item>
+    <item>race_White</item>
+  </string-array>
+
+  <string name="sex_prompt">Choose a sex</string>
+  <string-array name="sex_array">
+    <item>sex_Female</item>
+    <item>sex_Male</item>
+  </string-array>
+
+  <string name="native_country_prompt">Choose a native-country</string>
+  <string-array name="native_country_array">
+    <item>native-country_Mexico</item>
+    <item>native-country_Philippines</item>
+    <item>native-country_United-States</item>
+  </string-array>
+  
+</resources>

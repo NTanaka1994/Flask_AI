@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="メニューに戻る"
+              android:id="@+id/tel_back_menu"              
+  />
+
+  <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="あなたがアメリカ人だったら何歳？診断"
+              android:id="@+id/tel_input_title"
+              android:layout_below="@id/tel_back_menu"
+    />
+
+  <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="教育年数を入れてください"
+                android:id="@+id/info_edu_year"
+                android:layout_below="@id/tel_input_title"
+    />
+
+  <EditText
+            android:layout_width="match_parent"
+            android:imeOptions="actionGo"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:id="@+id/input_edu_year"
+            android:layout_below="@id/info_edu_year"
+    />
+
+  <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="年収を入れてください"
+                  android:id="@+id/info_salary"
+                  android:layout_below="@id/input_edu_year"
+    />
+
+  <EditText
+              android:layout_width="match_parent"
+              android:imeOptions="actionGo"
+              android:inputType="phone"
+              android:layout_height="wrap_content"
+              android:id="@+id/input_salary"
+              android:layout_below="@id/info_salary"
+    />
+
+  <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="業務形態を入れてください"
+                    android:id="@+id/info_workclass"
+                    android:layout_below="@id/input_salary"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_workclass"
+        android:prompt="@string/workclass_prompt"
+        android:layout_below="@id/info_workclass"
+   />
+
+  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="最終学歴を入れてください"
+                      android:id="@+id/info_education"
+                      android:layout_below="@id/info_workclass"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_education"
+        android:prompt="@string/education_prompt"
+        android:layout_below="@id/info_education"
+   />
+
+  <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配偶を入れてください"
+                        android:id="@+id/info_marital-status"
+                        android:layout_below="@id/input_education"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_marital_status"
+        android:prompt="@string/marital_status_prompt"
+        android:layout_below="@id/info_marital-status"
+   />
+
+  <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="職業を入れてください"
+                          android:id="@+id/info_occupation"
+                          android:layout_below="@id/input_marital_status"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_occupation"
+        android:prompt="@string/occupation_prompt"
+        android:layout_below="@id/info_occupation"
+   />
+
+  <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家族関係を入れてください"
+                            android:id="@+id/info_relationship"
+                            android:layout_below="@id/input_marital_status"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_relationship"
+        android:prompt="@string/relationship_prompt"
+        android:layout_below="@id/info_relationship"
+   />
+
+  <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="人種を入れてください"
+                              android:id="@+id/info_race"
+                              android:layout_below="@id/input_relationship"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_race"
+        android:prompt="@string/race_prompt"
+        android:layout_below="@id/info_race"
+   />
+
+  <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="性別を入れてください"
+                                android:id="@+id/info_sex"
+                                android:layout_below="@id/input_race"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_sex"
+        android:prompt="@string/sex_prompt"
+        android:layout_below="@id/info_sex"
+   />
+
+  <TextView
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:text="母国を入れてください"
+                                  android:id="@+id/info_native_country"
+                                  android:layout_below="@id/input_sex"
+    />
+
+  <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_native_country"
+        android:prompt="@string/native_country_prompt"
+        android:layout_below="@id/info_native_country"
+   />
+
+  <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="診断"
+               android:id="@+id/tel_result"
+  />
+
+
+</LinearLayout>

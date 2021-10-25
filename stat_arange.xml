@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="メニューに戻る"
+                    android:id="@+id/stat_arange_back_menu"
+  />
+
+  <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/stat_arange_reg_cla"
+            android:layout_below="@id/stat_arange_back_menu"
+   />
+
+  <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="目的変数とカテゴリ変数を選んでください"
+                  android:id="@+id/stat_arange_msg"
+                  android:layout_below="@id/stat_arange_reg_cla"
+  />
+
+  <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/stat_arange_title"
+                android:layout_below="@id/stat_arange_msg"
+  />
+
+  <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分析目的となる項目を選んでください"
+                    android:id="@+id/stat_arange_msg_y"
+                    android:layout_below="@id/stat_arange_title"
+  />
+
+
+  <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/stat_arange_y"
+          android:layout_below="@id/stat_arange_msg_y"
+   />
+
+  <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="カテゴリになっている項目を選んでください"
+                  android:id="@+id/stat_arange_msg_cate"
+                  android:layout_below="@id/stat_arange_y"
+  />
+
+
+  <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/stat_arange_cate"
+          android:layout_below="@id/stat_arange_msg_cate"
+   />
+
+  <Button
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="選択"
+                      android:id="@+id/stat_arange_select_cate"
+                      android:layout_below="@id/stat_arange_msg_cate"
+  />
+
+  <EditText
+              android:layout_width="match_parent"
+              android:imeOptions="actionGo"
+              android:inputType="phone"
+              android:layout_height="wrap_content"
+              android:id="@+id/selected_category"
+              android:layout_below="@id/stat_arange_select_cate"
+    />
+
+  <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="分析"
+                        android:id="@+id/stat_arange_to_result"
+                        android:layout_below="@id/selected_category"
+  />
+
+  <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/stat_arange_msg_error"
+                    android:layout_below="@id/stat_arange_to_result"
+  />
+
+
+
+</LinearLayout>
