@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using System.Collections.Generic;
 using Android.OS;
 using Android.Runtime;
