@@ -71,8 +71,6 @@ def hello():
     #ログイン成功ならリダイレクト・セッション作成、失敗なら入力しなおす
     elif request.method=="POST":
         #パスワードのロード
-        #com="SELECT user_id,pass FROM users where user_name='"+request.form["name"]+"'"
-        #cur.execute(com)
         cur.execute("SELECT user_id,pass FROM users where user_name=?",(str(request.form["name"]),))
         code=[]
         for row in cur:
@@ -107,17 +105,12 @@ def loginjson():
         tmp["name"]="正規の手法を使ってください"
         return jsonify(tmp)
     elif request.method=="POST":
-        #com="SELECT user_id,pass FROM users where user_name='"+request.form["name"]+"'"
-        #com="SELECT user_id,pass FROM users where user_name='"+request.args.get("name")+"'"
-        #cur.execute(com)
         cur.execute("SELECT user_id,pass FROM users where user_name=?",(str(request.form["name"]),))
         code=[]
         for row in cur:
             code.append(row[1])
         tmp={}
         if cph(row[1],request.form["pass"]):
-        #if cph(row[1],request.args.get("pass")):
-            #tmp["name"]=request.args.get("name")
             tmp["name"]=request.form["name"]
             tmp["id"]=int(row[0])
         else:
@@ -144,8 +137,6 @@ def createuser():
     #入力後のページ
     elif request.method=="POST":
         #名前に重複が無いかチェック
-        #com="SELECT user_id,user_name FROM users WHERE user_name='"+str(request.form["name"])+"'"
-        #cur.execute(com)
         cur.execute("SELECT user_id,user_name FROM users WHERE user_name=?",(str(request.form["name"]),))
         res=[]
         for row in cur:
@@ -159,7 +150,6 @@ def createuser():
             try:
                 cur.execute("INSERT INTO users (user_name,pass,date) VALUES (?,?,?)",t)
                 conn.commit()
-                #cur.execute("SELECT user_id FROM users WHERE user_name='"+request.form["name"]+"'")
                 cur.execute("SELECT user_id FROM users WHERE user_name=?",(str(request.form["name"]),))
                 user=[]
                 for row in cur:
@@ -205,8 +195,6 @@ def createuserjson():
     #POSTでアクセスされた場合
     elif request.method=="POST":
         #名前に重複が無いかチェック
-        #com="SELECT user_id,user_name FROM users WHERE user_name='"+str(request.form["name"])+"'"
-        #cur.execute(com)
         cur.execute("SELECT user_id,user_name FROM users WHERE user_name=?",(str(request.form["name"]),))
         res=[]
         tmp={}
@@ -263,18 +251,18 @@ def image():
         token=secrets.token_hex()
         session["image_key"]=token
         page="<title>画像予想</title>"
-        page=page+"\n<a href=logout align=right>ログアウト</a>\n<h1>画像予想をします</h1><br>\n"
+        page=page+"\n<a href=logout align=right>ログアウト</a>\n<br><a href=home>ホームに戻る</a><h1>画像予想をします</h1><br>\n"
         page=page+"<form method=post action=image-result-html enctype=multipart/form-data><br>\n"
         page=page+"<input type=hidden name=user_id value="+str(session["user_id"])+">\n"
         page=page+"予測したい画像を入れてください<br>\nHTML<br>"
-        page=page+"<input type=file name=img><br>\n"
+        page=page+"<input type=file name=img accept=image/*><br>\n"
         page=page+"<input type=hidden value="+token+" name=image_key>"
         page=page+"<input type=submit value=送信>\n"
         page=page+"</form>\n"
         page=page+"<form method=post action=image-result-json enctype=multipart/form-data><br>\n"
         page=page+"<input type=hidden name=user_id value="+str(session["user_id"])+">\n"
         page=page+"<br>\nJSON<br>"
-        page=page+"<input type=file name=img><br>\n"
+        page=page+"<input type=file name=img accept=image/*><br>\n"
         page=page+"<input type=submit value=送信>\n"
         page=page+"</form>\n"
         return page
@@ -375,7 +363,7 @@ def fote():
     if "user_id" in session:
         token=secrets.token_hex()
         session["telling_key"]=token
-        page="<title>占い</title>\n<a href=logout align=right>ログアウト</a>\n"
+        page="<title>占い</title>\n<a href=logout align=right>ログアウト</a>\n<br><a href=home>ホームに戻る</a>"
         page=page+"<h1>占いをします：あなたがアメリカ人だったら何歳？</h1><br>\n"
         page=page+"<h2>以下の項目を入力してください</h2>\n"
         page=page+"<form action=telling-ans-html method=POST>\n"
@@ -654,19 +642,19 @@ def ans():
                 page=page+"<h3>目的変数とカテゴリに一致があったため遷移しました</h3>"
         except:
             _=1
-        page=page+"<a href=logout align=right>ログアウト</a>\n<h1>統計データを分析します</h1><br>\n"
+        page=page+"<a href=logout align=right>ログアウト</a>\n<br><a href=home>ホームに戻る</a>\n<h1>統計データを分析します</h1><br>\n"
         page=page+"予測したい統計データを入れてください<br>"
         page=page+"<form method=post action=stat-before-html enctype=multipart/form-data><br>\n"
         page=page+"<input type=hidden name=analysis_key value="+token+">"
         page=page+"<input type=hidden name=user_id value="+str(session["user_id"])+">\n"
         page=page+"HTML<br>"
-        page=page+"<input type=file name=stat><br>"
+        page=page+"<input type=file name=stat accept=.csv><br>"
         page=page+"<input type=submit value=送信>"
         page=page+"</form>"
         page=page+"<form method=post action=stat-before-json enctype=multipart/form-data><br>\n"
         page=page+"<input type=hidden name=user_id value="+str(session["user_id"])+">\n"
         page=page+"JSON<br>"
-        page=page+"<input type=file name=stat><br>"
+        page=page+"<input type=file name=stat accept=.csv><br>"
         page=page+"<input type=submit value=送信>"
         page=page+"</form>"
         return page
@@ -824,6 +812,70 @@ def statanshtml():
                             return page
                     except:
                         return redirect("/analysis?miss=1")
+                else:
+                    y_name=request.form.get("y")
+                    page=page+"<input type=hidden name=y value="+html.escape(y_name)+">\n"
+                    y=df[y_name].values
+                    x_table=df.drop(y_name,axis=1)
+                    x=x_table.values
+                    x_name=x_table.columns
+                    page=page+"<input type=hidden name=yk value="+request.form.get("yk")+">\n"
+                    page=page+"JSON出力<br><input type=submit value=出力>\n"
+                    #回帰
+                    if request.form.get("yk")=="reg":
+                        modelG=GBR(n_estimators=10)
+                        modelG.fit(x,y)
+                        imp=modelG.feature_importances_
+                        out=[]
+                        tmp=[]
+                        page=page+"<table><tr><td>項目名</td><td>影響度(%)</td><td>相関係数</td></tr>"
+                        for i in range(len(imp)):
+                            tmp.append(x_name[i])
+                            tmp.append(imp[i]*100)
+                            tmp.append(np.corrcoef(x[:,i],y)[1][0])
+                            out.append(tmp)
+                            tmp=[]
+                        dout=pd.DataFrame(out)
+                        dout.columns=["項目名","影響度","相関係数"]
+                        dout=dout.sort_values("影響度",ascending=False)
+                        dout.to_csv("static/stats_after/"+str(session["user_id"])+"/"+name,encoding="shift-jis",index=False)
+                        for i in range(len(dout.values)):
+                            page=page+"<tr>"
+                            for j in range(len(dout.values[i])):
+                                page=page+"<td>"+html.escape(str(dout.values[i][j]))+"</td>"
+                            page=page+"</tr>\n"
+                        page=page+"</table>"
+                        t=(session["user_id"],name,"stat-reg-html",str(datetime.datetime.today()))
+                        cur.execute("INSERT INTO data (user_id,data_name,serv,date) VALUES (?,?,?,?)",t)
+                        conn.commit()
+                        return page
+                    #分類
+                    elif request.form.get("yk")=="cla":            
+                        modelG=GBC(n_estimators=10)
+                        modelG.fit(x,y)
+                        imp=modelG.feature_importances_
+                        out=[]
+                        tmp=[]
+                        page=page+"<a href=logout align=right>ログアウト</a><table><tr><td>項目名</td><td>影響度(%)</td></tr>"
+                        for i in range(len(imp)):
+                            tmp.append(x_name[i])
+                            tmp.append(imp[i]*100)
+                            out.append(tmp)
+                            tmp=[]
+                        dout=pd.DataFrame(out)
+                        dout.columns=["項目名","影響度"]
+                        dout=dout.sort_values("影響度",ascending=False)
+                        dout.to_csv("static/stats_after/"+str(session["user_id"])+"/"+name,encoding="shift-jis",index=False)
+                        for i in range(len(dout.values)):
+                            page=page+"<tr>"
+                            for j in range(len(dout.values[i])):
+                                page=page+"<td>"+html.escape(str(dout.values[i][j]))+"</td>"
+                            page=page+"</tr>\n"
+                        page=page+"</table>"
+                        t=(session["user_id"],name,"stat-cla-html",str(datetime.datetime.today()))
+                        cur.execute("INSERT INTO data (user_id,data_name,serv,date) VALUES (?,?,?,?)",t)
+                        conn.commit()
+                        return page
             else:
                 return "正規のアクセスをしてください"
         #セッションがない場合、「/login」にリダイレクト
@@ -872,9 +924,6 @@ def statansjson():
                 js.append(temp)
                 temp={}
             t=(int(request.form["user_id"]),name,"stat-reg-json",str(datetime.datetime.today()))
-            #print(int(request.form["user_id"]))
-            #print(name)
-            #print(str(datetime.datetime.today()))
             try:
                 cur.execute("INSERT INTO data (user_id,data_name,serv,date) VALUES (?,?,?,?)",t)
                 conn.commit()
@@ -903,9 +952,6 @@ def statansjson():
                 js.append(temp)
                 temp={}
             t=(int(request.form["user_id"]),name,"stat-cla-json",str(datetime.datetime.today()))
-            #print(int(request.form["user_id"]))
-            #print(name)
-            #print(str(datetime.datetime.today()))
             try:
                 cur.execute("INSERT INTO data (user_id,data_name,serv,date) VALUES (?,?,?,?)",t)
                 conn.commit()
