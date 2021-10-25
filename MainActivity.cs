@@ -19,7 +19,7 @@ namespace App1
     public class MainActivity : AppCompatActivity
     {
         int id;
-        string url = "http://192.168.1.99";
+        string url = "http://XXX.XXX.XXX.XXX";
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
