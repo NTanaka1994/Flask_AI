@@ -786,6 +786,7 @@ def statanshtml():
                         #分類
                         elif request.form.get("yk")=="cla":            
                             modelG=GBC(n_estimators=10)
+                            y=y.astype("int32")
                             modelG.fit(x,y)
                             imp=modelG.feature_importances_
                             out=[]
@@ -852,6 +853,7 @@ def statanshtml():
                     #分類
                     elif request.form.get("yk")=="cla":            
                         modelG=GBC(n_estimators=10)
+                        y=y.astype("int32")
                         modelG.fit(x,y)
                         imp=modelG.feature_importances_
                         out=[]
@@ -934,6 +936,7 @@ def statansjson():
         #分類
         elif request.form.get("yk")=="cla":
             modelG=GBC(n_estimators=10)
+            y=y.astype("int32")
             modelG.fit(x,y)
             imp=modelG.feature_importances_
             out=[]
