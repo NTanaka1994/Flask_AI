@@ -19,7 +19,7 @@ namespace App1
     public class MainActivity : AppCompatActivity
     {
         int id;
-        string url = "http://XXX.XXX.XXX.XXX";
+        string url = "http://192.168.10.101";
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -287,15 +287,22 @@ namespace App1
             this.FindViewById<Button>(Resource.Id.stat_arange_back_menu).Click += To_menu_Click;
             EditText selected_category = FindViewById<EditText>(Resource.Id.selected_category);
             Spinner stat_arange_cate = FindViewById<Spinner>(Resource.Id.stat_arange_cate);
+            Spinner stat_arange_y = FindViewById<Spinner>(Resource.Id.stat_arange_y);
             if (string.Equals(selected_category.Text, ""))
             {
-                selected_category.Text = stat_arange_cate.SelectedItem.ToString();
+                if (!string.Equals(stat_arange_y.SelectedItem.ToString(), stat_arange_cate.SelectedItem.ToString()))
+                {
+                    selected_category.Text = stat_arange_cate.SelectedItem.ToString();
+                }
             }
             else
             {
                 if (!selected_category.Text.Contains(stat_arange_cate.SelectedItem.ToString()))
                 {
-                    selected_category.Text = selected_category.Text + "," + stat_arange_cate.SelectedItem.ToString();
+                    if (!string.Equals(stat_arange_y.SelectedItem.ToString(),stat_arange_cate.SelectedItem.ToString())) 
+                    {
+                        selected_category.Text = selected_category.Text + "," + stat_arange_cate.SelectedItem.ToString();
+                    }
                 }
             }
         }
