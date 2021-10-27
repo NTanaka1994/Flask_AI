@@ -12,6 +12,7 @@ using System.Net.Http.Headers;
 using System.IO;
 using System.Net;
 using Java.Net;
+using Android.Views;
 
 namespace App1
 {
@@ -19,7 +20,7 @@ namespace App1
     public class MainActivity : AppCompatActivity
     {
         int id;
-        string url = "http://XXXXXXXXXXXX";
+        string url = "http://192.168.10.101";
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -40,6 +41,9 @@ namespace App1
         private void To_telling_button_Click(object sender, System.EventArgs e)
         {
             SetContentView(Resource.Layout.telling_input);
+            Button tel_result = FindViewById<Button>(Resource.Id.tel_result);
+            EditText edu_year = FindViewById<EditText>(Resource.Id.input_edu_year);
+            EditText salary = FindViewById<EditText>(Resource.Id.input_salary);
             this.FindViewById<Button>(Resource.Id.tel_back_menu).Click += To_menu_Click;
             //業務形態のプルダウン
             Spinner workclass = FindViewById<Spinner>(Resource.Id.input_workclass);
@@ -89,8 +93,116 @@ namespace App1
             var adapter8 = ArrayAdapter.CreateFromResource(this, Resource.Array.native_country_array, Android.Resource.Layout.SimpleSpinnerItem);
             adapter8.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             native_country.Adapter = adapter8;
+            //salary.KeyPress += Input_salary;
+            //edu_year.KeyPress += Input_edu_year;
+            //tel_result.Enabled = false;
             this.FindViewById<Button>(Resource.Id.tel_result).Click += Tel_result_Click;
+            
         }
+
+        private void Input_edu_year(object sender, View.KeyEventArgs e)
+        {
+            Button tel_result = FindViewById<Button>(Resource.Id.tel_result);
+            EditText edu_year = FindViewById<EditText>(Resource.Id.input_edu_year);
+            EditText salary = FindViewById<EditText>(Resource.Id.input_salary);
+            //edu_year.Text = edu_year.Text +sender.ToString();
+            switch (e.KeyCode.ToString()) {
+                case "Num1":
+                    edu_year.Text = edu_year.Text + "1";
+                    break;
+                case "Num2":
+                    edu_year.Text = edu_year.Text + "2";
+                    break;
+                case "Num3":
+                    edu_year.Text = edu_year.Text + "3";
+                    break;
+                case "Num4":
+                    edu_year.Text = edu_year.Text + "4";
+                    break;
+                case "Num5":
+                    edu_year.Text = edu_year.Text + "5";
+                    break;
+                case "Num6":
+                    edu_year.Text = edu_year.Text + "6";
+                    break;
+                case "Num7":
+                    edu_year.Text = edu_year.Text + "7";
+                    break;
+                case "Num8":
+                    edu_year.Text = edu_year.Text + "8";
+                    break;
+                case "Num9":
+                    edu_year.Text = edu_year.Text + "9";
+                    break;
+                case "Num0":
+                    edu_year.Text = edu_year.Text + "0";
+                    break;
+                case "Del":
+                    edu_year.Text = edu_year.Text.Substring(0,edu_year.Text.Length-1);
+                    break;
+            }
+            if (!string.Equals("", edu_year.Text) && !string.Equals("", salary.Text))
+            {
+                tel_result.Enabled = true;
+            }
+            else 
+            {
+                tel_result.Enabled = false;
+            }
+        }
+
+        private void Input_salary(object sender, View.KeyEventArgs e)
+        {
+            Button tel_result = FindViewById<Button>(Resource.Id.tel_result);
+            EditText edu_year = FindViewById<EditText>(Resource.Id.input_edu_year);
+            EditText salary = FindViewById<EditText>(Resource.Id.input_salary);
+            //salary.Text = salary.Text + e.KeyCode;
+            switch (e.KeyCode.ToString())
+            {
+                case "Num1":
+                    salary.Text = salary.Text + "1";
+                    break;
+                case "Num2":
+                    salary.Text = salary.Text + "2";
+                    break;
+                case "Num3":
+                    salary.Text = salary.Text + "3";
+                    break;
+                case "Num4":
+                    salary.Text = salary.Text + "4";
+                    break;
+                case "Num5":
+                    salary.Text = salary.Text + "5";
+                    break;
+                case "Num6":
+                    salary.Text = salary.Text + "6";
+                    break;
+                case "Num7":
+                    salary.Text = salary.Text + "7";
+                    break;
+                case "Num8":
+                    salary.Text = salary.Text + "8";
+                    break;
+                case "Num9":
+                    salary.Text = salary.Text + "9";
+                    break;
+                case "Num0":
+                    salary.Text = salary.Text + "0";
+                    break;
+                case "Del":
+                    salary.Text = salary.Text.Substring(0, salary.Text.Length - 1);
+                    break;
+            }
+            if (!string.Equals("", edu_year.Text) && !string.Equals("", salary.Text))
+            {
+                tel_result.Enabled = true;
+            }
+            else
+            {
+                tel_result.Enabled = false;
+            }
+        }
+
         //プルダウン作成に必要な関数
         private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
