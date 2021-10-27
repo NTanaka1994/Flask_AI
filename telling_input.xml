@@ -22,7 +22,7 @@
   <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="教育年数を入れてください"
+                android:text="教育年数を入れてください(小学校から)"
                 android:id="@+id/info_edu_year"
                 android:layout_below="@id/tel_input_title"
     />
