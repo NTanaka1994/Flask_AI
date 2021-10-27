@@ -369,8 +369,8 @@ def fote():
         page=page+"<form action=telling-ans-html method=POST>\n"
         page=page+"<input type=hidden name=telling_key value="+token+">"
         page=page+"<input type=hidden name=user_id value="+str(session["user_id"])+">\n"
-        page=page+"<h3>教育年数</h3>"
-        page=page+"<input type=text name=education-num pattern=[0-9]+>"
+        page=page+"<h3>教育年数(小学校から)</h3>"
+        page=page+"<input type=text name=education-num placeholder=半角整数 pattern=[0-9]+ required>"
         page=page+"<h3>年収</h3>"
         page=page+"<input type=radio name=Y value=0 checked>500万円未満<br>\n"
         page=page+"<input type=radio name=Y value=1>500万円以上<br>\n"
@@ -786,8 +786,18 @@ def statanshtml():
                         #分類
                         elif request.form.get("yk")=="cla":            
                             modelG=GBC(n_estimators=10)
-                            y=y.astype("int32")
-                            modelG.fit(x,y)
+                            #y=y.astype("int32")
+                            y_dict={}
+                            val=0
+                            y_n=[]
+                            for i in range(len(y)):
+                                try:
+                                    y_n.append(y_dict[y[i]])
+                                except:
+                                    y_dict[y[i]]=val
+                                    y_n.append(val)
+                                    val=val+1
+                            modelG.fit(x,y_n)
                             imp=modelG.feature_importances_
                             out=[]
                             tmp=[]
@@ -853,8 +863,18 @@ def statanshtml():
                     #分類
                     elif request.form.get("yk")=="cla":            
                         modelG=GBC(n_estimators=10)
-                        y=y.astype("int32")
-                        modelG.fit(x,y)
+                        #y=y.astype("int32")
+                        y_dict={}
+                        val=0
+                        y_n=[]
+                        for i in range(len(y)):
+                            try:
+                                y_n.append(y_dict[y[i]])
+                            except:
+                                y_dict[y[i]]=val
+                                y_n.append(val)
+                                val=val+1
+                        modelG.fit(x,y_n)
                         imp=modelG.feature_importances_
                         out=[]
                         tmp=[]
@@ -936,8 +956,18 @@ def statansjson():
         #分類
         elif request.form.get("yk")=="cla":
             modelG=GBC(n_estimators=10)
-            y=y.astype("int32")
-            modelG.fit(x,y)
+            #y=y.astype("int32")
+            y_dict={}
+            val=0
+            y_n=[]
+            for i in range(len(y)):
+                try:
+                    y_n.append(y_dict[y[i]])
+                except:
+                    y_dict[y[i]]=val
+                    y_n.append(val)
+                    val=val+1
+            modelG.fit(x,y_n)
             imp=modelG.feature_importances_
             out=[]
             tmp=[]
